@@ -1,8 +1,7 @@
 package br.com.MatePaso.screenMatch;
 
-import br.com.MatePaso.screenMatch.Service.ConsumoAPI;
-import br.com.MatePaso.screenMatch.Service.converterDados;
-import br.com.MatePaso.screenMatch.model.dadosSerie;
+
+import br.com.MatePaso.screenMatch.principal.principal;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,16 +16,8 @@ public class ScreenMatchApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		ConsumoAPI API = new ConsumoAPI();
+		principal Principal = new principal();
+		Principal.exibirMenu();
 
-		var json = API.obterDados("https://www.omdbapi.com/?t=supernatural&apikey=ff6c69cd");
-
-		System.out.println(json);
-
-		converterDados conversor = new converterDados();
-
-		dadosSerie dados = conversor.obterDados(json, dadosSerie.class);
-
-		System.out.println(dados);
 	}
 }
